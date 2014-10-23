@@ -1,4 +1,4 @@
-akegata-docker
+puppet-docker
 
 Manage docker instances in systemd with hiera.
 Installs docker 1.3.0 from binary, since CentOS 7 repos provide a very old docker version.
