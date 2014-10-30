@@ -26,7 +26,7 @@ Creates systemd or init services (depending on RHEL version) for containers spec
 
 ### What docker affects
 
-This module installs docker 1.3.0 from binary, since CentOS 7 repos provide a very old docker version.
+On RHEL/CentOS 7, this module installs docker 1.3.0 from binary, since RHEL/CentOS 7 repos provide a very old docker version.
 
 ### Beginning with docker
 
@@ -60,9 +60,9 @@ The following parameters are available:
 ## Reference
 
 Contains a single class: docker.
-A define called docker::container is created, which can be called through hiera as listed in Usage.
+A define called docker::container is created, which can be called through hiera as described in Usage.
 
-The module copies the following folders onto the system (they are taken from the CentOS 6.5 docker RPM):
+On RHEL/CentOS 7, the module copies the following folders onto the system (they are taken from the CentOS 6.5 docker RPM):
 * /usr/bin/docker
 * /usr/lib/systemd/system/docker.service
 * /usr/lib/systemd/system/docker.socket
@@ -70,8 +70,6 @@ The module copies the following folders onto the system (they are taken from the
 * /usr/share/vim/vimfiles/syntax/dockerfile.vim
 * /usr/share/vim/vimfiles/ftdetect/dockerfile.vim
 * /usr/share/vim/vimfiles/doc/dockerfile.txt
-
-Services files are also created in /usr/lib/systemd/system for each container specified.
 
 ## Limitations
 
