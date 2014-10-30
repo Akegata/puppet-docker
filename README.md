@@ -1,40 +1,3 @@
-puppet-docker
-
-Manage docker instances in systemd with hiera.
-Installs docker 1.3.0 from binary, since CentOS 7 repos provide a very old docker version.
-
-Contact
--------
-Martin Hovmöller akegata@gmail.com
-
-Support
--------
-Tested on puppet 3.7.1, hiera 1.3.4 on CentOS 7.
-
-Installation
-------------
-1) Install akegata-docker module
- 
-  Install the module by normal means.  You will also need to have puppet
-  setup to work with hiera as a data store. 
-
-2) Add the docker class in hiera
-    classes
-      - docker
-
-3) Set up docker containers in hiera
-
-    docker::container:
-      apache:
-        repository: 'akegata/apache2'
-        envs:
-          - 'APACHE_USER=apache'
-        ports:
-          - '8080:80'
-        volumes:
-          - '/var/www/httpd:/var/www/httpd/'
-
-
 # docker
 
 #### Table of Contents
@@ -49,14 +12,15 @@ Installation
 5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
 6. [Development - Guide for contributing to the module](#development)
+7. [Contact](#contact)
 
 ## Overview
 
-Manage docker instances with hiera in RHEL/CentOS 7.
+Manage docker instances with hiera in RHEL/CentOS.
 
 ## Module Description
 
-Creates systemd services for containers specified in hiera.
+Creates systemd or init services (depending on RHEL version) for containers specified in hiera.
 
 ## Setup
 
@@ -65,6 +29,9 @@ Creates systemd services for containers specified in hiera.
 This module installs docker 1.3.0 from binary, since CentOS 7 repos provide a very old docker version.
 
 ### Beginning with docker
+
+Install the docker module:
+  puppet module install akegata-docker
 
 Add the docker class in hiera:
     classes
@@ -108,4 +75,9 @@ Services files are also created in /usr/lib/systemd/system for each container sp
 
 ## Limitations
 
-Only compatible with RHEL/CentOS 7 at this moment.
+Tested on puppet 3.7.1 with hiera 1.3.4 on CentOS 6 and 7.
+
+## Contact
+
+Martin Hovmöller akegata@gmail.com
+
